@@ -1,0 +1,50 @@
+OVERVIEW
+
+Program to match advertisers to people that maximizes the predicted
+click-thru-rate (CTR) using a prediction function that takes the names
+of the advertiser and person.
+
+
+RUNNING
+
+Pass the advertisers filename and then the people filename.
+
+Example:
+
+  python ad_matcher.py advertisers.txt people.txt
+
+
+OUTPUT
+
+Matched pairs are listed with advertiser first, in the order that the
+advertisers appear in the input file.  The total CTR is outputted
+last.
+
+
+TESTING
+
+The given CTR function is known in the code as funky_ctr (since it's
+so funky).  This is tested in four unit tests.
+
+Since the funky CTR function is hard to validate by hand -- even with
+small inputs -- the matching functionality is tested using a simpler
+CTR function: the product of the lengths of the names of the
+advertiser and person.  In addition, we pass advertiser and people
+lists containing elements whose sizes correspond to each other (i.e.,
+the same number of elements of length N appear in each list).  We
+expect the corresponding elements to be matched, given what we know
+about the sum of squares being larger than the sum of other products.
+
+Example:
+
+  python ad_matcher_test.py
+
+
+OPEN SOURCE COMPONENTS
+
+The "heavy lifting" is done by code in the file munkres.py, which has
+been downloaded from https://github.com/bmc/munkres and not altered.
+
+Note that the Munkres algorithm is a cost-minimizing algorithm.  This
+problem requires maximizing CTR, so the CTR matrix must be transformed
+into a cost matrix.
