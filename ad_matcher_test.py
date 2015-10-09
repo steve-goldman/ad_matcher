@@ -1,5 +1,4 @@
 import unittest
-from random import shuffle
 from ad_matcher import funky_ctr, make_match
 
 class AdMatcherTest(unittest.TestCase):
